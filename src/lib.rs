@@ -1,27 +1,27 @@
-// pub struct Config {
-//     pub query: String,
-//     pub file_path: String,
-// }
+use std::error::Error;
 
-// impl Config {
-//     fn build(args: &[String]) -> Result<Config, &'static str> {
-//         if args.len() < 3 {
-//             return Err("not enough arguments");
-//         }
+pub struct Config {
+    pub query: String,
+    pub file_path: String,
+}
 
-//         let query = args[1].clone();
-//         let file_path = args[2].clone();
+impl Config {
+    pub fn build(args: &[String]) -> Result<Config, &'static str> {
+        if args.len() < 3 {
+            return Err("not enough arguments");
+        }
 
-//         Ok(Config { query, file_path })
-//     }
-// }
+        let query = args[1].clone();
+        let file_path = args[2].clone();
 
-// pub fn run(config: Config) {
-//     println!("Query: {:?}", config.query);
-//     println!("File name: {:?}", config.file_path);
+        Ok(Config { query, file_path })
+    }
+}
 
-//     let contents =
-//         std::fs::read_to_string(config.file_path).expect("Something went wrong reading the file");
+pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
+    let contents = std::fs::read_to_string(config.file_path)?;
 
-//     println!("Content: {:?}", contents);
-// }
+    println!("Content: {:?}", contents);
+
+    Ok(())
+}
