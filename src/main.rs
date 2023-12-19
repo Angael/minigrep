@@ -1,4 +1,4 @@
-use std::{env, process};
+use std::{env, error::Error, process};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -30,12 +30,10 @@ impl Config {
     }
 }
 
-fn run(config: Config) {
-    println!("Query: {:?}", config.query);
-    println!("File name: {:?}", config.file_path);
-
-    let contents =
-        std::fs::read_to_string(config.file_path).expect("Something went wrong reading the file");
+fn run(config: Config) -> Result<(), Box<dyn Error>> {
+    let contents = std::fs::read_to_string(config.file_path)?;
 
     println!("Content: {:?}", contents);
+
+    Ok(())
 }
