@@ -8,15 +8,23 @@ A simple grep-like program written in Rust for learning purposes.
 cargo run -- the poem.txt
 ```
 
-To search for a case-insensitive string:
+### To search for a case-insensitive string:
+
+Linux:
 
 ```bash
-IGNORE_CASE=1 cargo run -- the poem.txt
+IGNORE_CASE=1 cargo run -- to poem.txt
+```
+
+Windows:
+
+```powershell
+$Env:IGNORE_CASE=1; cargo run -- to poem.txt
 ```
 
 ## Building
 
-To build this app for production:
+To build this app for prod:
 
 ```bash
 cargo build --release
