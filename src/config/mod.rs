@@ -18,10 +18,10 @@ impl Config {
                 "-i" | "--insensitive-case" => {
                     ignore_case = true;
                 }
-                "-q" | "--query" => {
+                "-q" | "--query" if (i + 1) < args.len() => {
                     query = Some(args[i + 1].clone());
                 }
-                "-f" | "--file" => {
+                "-f" | "--file" if (i + 1) < args.len() => {
                     file_path = Some(args[i + 1].clone());
                 }
                 _ => {}
