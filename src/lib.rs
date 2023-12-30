@@ -14,7 +14,6 @@ impl Config {
         let file_path = args[2].clone();
 
         let ignore_case = std::env::var("IGNORE_CASE").is_ok();
-        println!("ignore_case: {:?}", ignore_case);
 
         Ok(Config {
             query,
