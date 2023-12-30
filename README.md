@@ -6,6 +6,7 @@ A simple grep-like program written in Rust for learning purposes.
 
 ```bash
 cargo run -- the poem.txt
+cargo run -- the poem.txt > out.txt 2> err.txt
 ```
 
 ### To search for a case-insensitive string:
