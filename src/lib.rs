@@ -16,6 +16,7 @@ impl Config {
     }
 }
 
+// TODO: also return row number for each result
 #[allow(unused_variables)]
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     // Specifying type of results is not necessary
@@ -46,7 +47,14 @@ Pick three.";
     }
 }
 
-pub fn run(_config: Config) -> Result<(), Box<dyn std::error::Error>> {
-    // implementation details here
+pub fn run(config: Config) -> Result<(), Box<dyn std::error::Error>> {
+    let contents = std::fs::read_to_string(config.file_path)?;
+
+    let results = search(&config.query, &contents);
+
+    for line in results {
+        println!("{}", line);
+    }
+
     Ok(())
 }
