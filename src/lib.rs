@@ -18,7 +18,16 @@ impl Config {
 
 #[allow(unused_variables)]
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
-    vec![]
+    // Specifying type of results is not necessary
+    let mut results: Vec<&str> = Vec::new();
+
+    for line in contents.lines() {
+        if line.contains(query) {
+            results.push(line);
+        }
+    }
+
+    results
 }
 
 #[cfg(test)]
