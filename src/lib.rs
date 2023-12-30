@@ -1,5 +1,3 @@
-use std::error::Error;
-
 pub struct Config {
     pub query: String,
     pub file_path: String,
@@ -18,12 +16,7 @@ impl Config {
     }
 }
 
-pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
-    let contents = std::fs::read_to_string(config.file_path)?;
-
-    Ok(())
-}
-
+#[allow(unused_variables)]
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     vec![]
 }
@@ -42,4 +35,9 @@ Pick three.";
 
         assert_eq!(vec!["safe, fast, productive."], search(query, contents));
     }
+}
+
+pub fn run(_config: Config) -> Result<(), Box<dyn std::error::Error>> {
+    // implementation details here
+    Ok(())
 }
