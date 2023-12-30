@@ -5,22 +5,9 @@ A simple grep-like program written in Rust for learning purposes.
 ## Usage
 
 ```bash
-cargo run -- the poem.txt
-cargo run -- the poem.txt > out.txt 2> err.txt
-```
-
-### To search for a case-insensitive string:
-
-Linux:
-
-```bash
-IGNORE_CASE=1 cargo run -- to poem.txt
-```
-
-Windows:
-
-```powershell
-$Env:IGNORE_CASE=1; cargo run -- to poem.txt
+cargo run -- --insensitive-case --file poem.txt --query the
+or
+cargo run -- -i -f poem.txt -q the
 ```
 
 ## Building
