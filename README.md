@@ -2,28 +2,23 @@
 
 A simple grep-like program written in Rust for learning purposes.
 
-## Usage
+## Binary usage
 
 ```bash
-cargo run -- the poem.txt
-cargo run -- the poem.txt > out.txt 2> err.txt
+./minigrep.exe -i -f poem.txt -q the
 ```
 
-### To search for a case-insensitive string:
+## Development
 
-Linux:
+### Running
 
 ```bash
-IGNORE_CASE=1 cargo run -- to poem.txt
+cargo run -- --insensitive-case --file poem.txt --query the
+or
+cargo run -- -i -f poem.txt -q the
 ```
 
-Windows:
-
-```powershell
-$Env:IGNORE_CASE=1; cargo run -- to poem.txt
-```
-
-## Building
+### Building
 
 To build this app for prod:
 
